@@ -1,0 +1,368 @@
+﻿@using StartWebSiteEnglish.Models
+
+@{
+    ViewBag.Title = "Изучение анлийского языка";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    //User user = Session["User"] as User;
+}
+
+@section Links{
+    @*<link href="~/Content/Main/main-style-page.css" rel="stylesheet" />*@
+    @*<link href="~/Content/Main/introduce.css" rel="stylesheet" />*@
+    <style>
+        .glyphicon {
+            margin-right: 5px;
+        }
+
+        .thumbnail {
+            margin-bottom: 20px;
+            padding: 0px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px
+        }
+
+        .item.list-group-item {
+            float: none;
+            width: 100%;
+            background-color: #fff;
+            margin-bottom: 10px
+        }
+
+            .item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+                background: rgb(105,65,152)
+            }
+
+            .item.list-group-item .list-group-image {
+                margin-right: 10px
+            }
+
+            .item.list-group-item .thumbnail {
+                margin-bottom: 0px
+            }
+
+            .item.list-group-item .caption {
+                padding: 9px 9px 0px 9px
+            }
+
+            .item.list-group-item:nth-of-type(odd) {
+                background: #eeeeee
+            }
+
+            .item.list-group-item:before, .item.list-group-item:after {
+                display: table;
+                content: " "
+            }
+
+            .item.list-group-item img {
+                float: left
+            }
+
+            .item.list-group-item:after {
+                clear: both
+            }
+
+        .list-group-item-text {
+            margin: 0 0 11px
+        }
+    </style>
+}
+@section Body{
+
+    <h3>Мы вам предлагаем изучить следующее</h3>
+    <div class="container" style="width: 90%;">
+        <div class="well well-sm">
+            <strong>Вид: </strong>
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th-list"></span>Список
+                </a>
+                <a href="#" id="grid" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th"></span>Сетка
+                </a>
+            </div>
+        </div>
+        <div id="products" class="row grid-group">
+            <div class="item col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="1" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">Товар 1</h4>
+                        <p class="group inner list-group-item-text">
+                            Описание товара 1, Описание товара 1, Описание товара 1, Описание товара 1, Описание товара 1, Описание товара 1, Описание товара 1, Описание товара 1, Описание товара 1.
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">$350.000</p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-success" href="#">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="2" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">Товар 2</h4>
+                        <p class="group inner list-group-item-text">
+                            Описание товара 2, Описание товара 2, Описание товара 2, Описание товара 2, Описание товара 2, Описание товара 2, Описание товара 2, Описание товара 2, Описание товара 2.
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    $250.000
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-success" href="#">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="3" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">Товар 3</h4>
+                        <p class="group inner list-group-item-text">
+                            Описание товара 3, Описание товара 3, Описание товара 3, Описание товара 3, Описание товара 3, Описание товара 3, Описание товара 3, Описание товара 3, Описание товара 3.
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    $150.000
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-success" href="#">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="4" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">Товар 4</h4>
+                        <p class="group inner list-group-item-text">
+                            Описание товара 4, Описание товара 4, Описание товара 4, Описание товара 4, Описание товара 4, Описание товара 4, Описание товара 4, Описание товара 4, Описание товара 4.
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    $200.000
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-success" href="#">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="5" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">Товар 5</h4>
+                        <p class="group inner list-group-item-text">
+                            Описание товара 5, Описание товара 5, Описание товара 5, Описание товара 5, Описание товара 5, Описание товара 5, Описание товара 5, Описание товара 5, Описание товара 5.
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    $320.000
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-success" href="#">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="http://bootstraptema.ru/images/type/400x250.png" alt="6" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">Товар 6</h4>
+                        <p class="group inner list-group-item-text">
+                            Описание товара 6, Описание товара 6, Описание товара 6, Описание товара 6, Описание товара 6, Описание товара 6, Описание товара 6, Описание товара 6, Описание товара 6.
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    $21.000
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-success" href="#">Заказать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#list').click(function (event) {
+                event.preventDefault();
+                $('#products .item').addClass('list-group-item');
+            });
+            $('#grid').click(function (event) {
+                event.preventDefault();
+                $('#products .item').removeClass('list-group-item');
+                $('#products .item').addClass('grid-group-item');
+            });
+        });
+    </script>
+
+
+
+
+
+    @*<div class="main">
+
+            <h1>Главная станица</h1>
+            <hr />
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                <button class="btn" onclick="filterSelection('nature')"> Nature</button>
+                <button class="btn" onclick="filterSelection('cars')"> Cars</button>
+                <button class="btn" onclick="filterSelection('people')"> People</button>
+            </div>
+
+            <!-- Portfolio Gallery Grid -->
+            <div class="row">
+                <div class="column nature">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Mountains" style="width:100%">
+                        <h4>Mountains</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <div class="column nature">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Lights" style="width:100%">
+                        <h4>Lights</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <div class="column nature">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Nature" style="width:100%">
+                        <h4>Forest</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+
+                <div class="column cars">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Car" style="width:100%">
+                        <h4>Retro</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <div class="column cars">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Car" style="width:100%">
+                        <h4>Fast</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <div class="column cars">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Car" style="width:100%">
+                        <h4>Classic</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+
+                <div class="column people">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Car" style="width:100%">
+                        <h4>Girl</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <div class="column people">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Car" style="width:100%">
+                        <h4>Man</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <div class="column people">
+                    <div class="content">
+                        <img src="~/fonts/ed1.jpg" alt="Car" style="width:100%">
+                        <h4>Woman</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <!-- END GRID -->
+            </div>
+
+            <!-- END MAIN -->
+        </div>
+
+        <script>
+            filterSelection("all")
+            function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("column");
+                if (c == "all") c = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                }
+            }
+
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+                }
+            }
+
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                        arr1.splice(arr1.indexOf(arr2[i]), 1);
+                    }
+                }
+                element.className = arr1.join(" ");
+            }
+
+
+            // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        </script>*@
+}
+

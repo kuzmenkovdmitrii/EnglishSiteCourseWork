@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "TestsText";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+@section Links{
+
+    <script src="~/Scripts/tests/test_for_text.js"></script>
+    @*<link href="~/Content/Main/test_for_text.css" rel="stylesheet" />*@
+    <link href="~/Content/Main/materialssyle.css" rel="stylesheet" />
+}
+
+@section Body{
+
+    <h2>TestsText</h2>
+    <div style="display: block; margin-bottom: 25px;">
+        <div id="translate" style="display: none;">
+            <p>
+                We have created a "progress bar" to show how far a page has been scrolled.
+
+                It also works when you scroll back up.
+
+                It is even responsive! Resize the browser window to see the effect.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+
+                Some text to e
+            </p>
+            @*<h1>@Model.Translate </h1>*@
+        </div>
+
+        <button onclick="showTranslate()" type="submit" name="action" value="ViewText">Показать текст</button>
+    </div>
+    <div class="block-left">
+        <form name="quiz">
+            <ol>
+                <script>
+                    for (var q = 0; q < questions.length; ++q) {
+                        var question = questions[q];
+                        var idx = 1 + q;
+
+                        document.writeln('<li><span class="question">' + question.text + '</span><br/>');
+                        for (var i in question.answers) {
+                            document.writeln('<div style="margin-bottom:5px;"><input type=radio  name="q' + idx + '" value="' + i +
+                                '" onClick="Engine(' + q + ', this.value)"/>' + question.answers[i] + '</br></div>');
+                        }
+                    }
+                </script>
+            </ol>
+            <input type="button" onClick="Score()" value="Проверить результаты" />
+        </form>
+    </div>
+
+}
+
+
+

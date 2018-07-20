@@ -1,0 +1,785 @@
+﻿@using StartWebSiteEnglish.Models
+@{
+    ViewBag.Title = "Тест на определение уровня";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Links{
+    <link href="~/Content/Grammer/style_test_grammer.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    @*<script src="~/Scripts/tests/quastions.js"></script>*@
+    @*<link href="~/Content/Main/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/Main/jQuizler.css" rel="stylesheet" />
+
+    @*<script src="~/Scripts/tests/text.js"></script>*@
+}
+
+
+@section Body{
+    @*<style>
+            form {
+                margin-left: 20px;
+            }
+
+            .testme_answer_block label {
+                font-weight: 100;
+            }
+        </style>*@
+    <div id="jQuizler" class="main-quiz-holder">
+        <h2>Пройдите тест</h2>
+        <div id="text_test">
+            <p>
+                Данный тест поможет Вам определить уровень английского языка в соответствии с международной системой. Тест рассчитан на определение уровней:
+                <br />
+                1. Beginer
+                <br />
+                2. Elementary
+                <br />
+                3. Pre-intermediate/Intermediate
+                <br />
+                4. Upper-intermediate
+                <br />
+                Тест состоит из 50 вопросов(от простого к сложному), ограничения по времени нет. Чтобы получить достоверный результат, старайтесь не использовать какие-либо справочные материалы. Желаем Вам удачи!
+            </p>
+            <p>Ограничение по времени: 20 минут</p>
+        </div>
+        <button class="btn btn-large">Начать</button>
+    </div>
+    @*<div class="block-test">
+            <div class="test">
+                <div class="question">
+                    <span id="result"></span>
+                    <span id="question"></span>
+
+                </div>
+                <div class="answer">
+                    <button onclick="check(1)" id="option1"></button>
+                    <button onclick="check(2)" id="option2"></button>
+                    <button onclick="check(3)" id="option3"></button>
+                    <button onclick="check(4)" id="option4"></button>
+                    <button onclick="check(5)" id="option5" style="display: none;"></button>
+                    <button onclick="nextQuest()" id="next" style="display: none;" >Следующий</button>
+                </div>
+            </div>
+
+            <div class="button">
+                <button id="start" class="oganesyan" onclick="check(0)">Приступить к тесту</button>
+                <button class="oganesyan"><a class="link" href="/Main/Grammer" style="color: #fff; text-decoration: none;">Закончить</a></button>
+                <script type="text/javascript">var curent_url = document.URL; document.write("<button class='oganesyan' style='display: none;' id='end'><a class='a_reset' href='" + curent_url + "'>Начать сначала</a></button>");</script>
+            </div>
+        </div>
+        <link type="text/css" rel="stylesheet" href="http://readytospeak.ru/wp-content/plugins/wp_testme/testme_style.css" />*@
+
+
+    <script src="~/Scripts/tests/jQuizler.js"></script>
+
+    <script src="~/Scripts/tests/firsttest_questions.js"></script>
+    <script>
+        //function changeAnswer(option) {
+
+        //}
+        //$(document).ready(function () {  //дожидаемся загрузки страницы
+        //    $('#btn1').on("click", function () {  //вешаем событие на клик по кнопке id="btn1"
+        //        $('#next').toggle(); //включает/выключает элемент id="text"
+        //    });
+        //});
+
+        $("document").ready(function () {
+            $("#jQuizler").jQuizler(questions);
+        });
+    </script>
+
+    <div>
+        @*<form method="post" style="margin-left:80px;" class="testme_form" name="testme_form_16"
+                  onSubmit="test_16(); return false">
+
+
+                <div class="testme_question">
+                    <div class="testme_question_text">1. ___________________your name?</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_1" id="answer_id_119" class="testme_answer" value="119" /><label for="answer_id_119">Who’s</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_1" id="answer_id_120" class="testme_answer" value="120" /><label for="answer_id_120">What’s</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_1" id="answer_id_121" class="testme_answer" value="121" /><label for="answer_id_121">How’s</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_1" id="answer_id_122" class="testme_answer" value="122" /><label for="answer_id_122">Why’s</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">2. _________ old are you?</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_2" id="answer_id_123" class="testme_answer" value="123" /><label for="answer_id_123">Who</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_2" id="answer_id_124" class="testme_answer" value="124" /><label for="answer_id_124">What</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_2" id="answer_id_125" class="testme_answer" value="125" /><label for="answer_id_125">How</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_2" id="answer_id_126" class="testme_answer" value="126" /><label for="answer_id_126">When</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">3. Выберите верное</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_3" id="answer_id_127" class="testme_answer" value="127" /><label for="answer_id_127">I’m 17 years old</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_3" id="answer_id_128" class="testme_answer" value="128" /><label for="answer_id_128">I’ve 17 years old</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_3" id="answer_id_129" class="testme_answer" value="129" /><label for="answer_id_129">I are 17 years old</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_3" id="answer_id_130" class="testme_answer" value="130" /><label for="answer_id_130">I have 17 years old</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">4. ______a bicycle?</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_4" id="answer_id_131" class="testme_answer" value="131" /><label for="answer_id_131">You have</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_4" id="answer_id_132" class="testme_answer" value="132" /><label for="answer_id_132">Has you</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_4" id="answer_id_133" class="testme_answer" value="133" /><label for="answer_id_133">Do you have</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_4" id="answer_id_134" class="testme_answer" value="134" /><label for="answer_id_134">You’ve got</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">5. John___________ a tennis racket</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_5" id="answer_id_135" class="testme_answer" value="135" /><label for="answer_id_135">hasn’t got</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_5" id="answer_id_136" class="testme_answer" value="136" /><label for="answer_id_136">haven’t</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_5" id="answer_id_137" class="testme_answer" value="137" /><label for="answer_id_137">not has</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_5" id="answer_id_138" class="testme_answer" value="138" /><label for="answer_id_138">haven’t got</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">6. Give it to______</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_6" id="answer_id_139" class="testme_answer" value="139" /><label for="answer_id_139">he</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_6" id="answer_id_140" class="testme_answer" value="140" /><label for="answer_id_140">I</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_6" id="answer_id_141" class="testme_answer" value="141" /><label for="answer_id_141">she</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_6" id="answer_id_142" class="testme_answer" value="142" /><label for="answer_id_142">her</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">7. Выберите верное</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_7" id="answer_id_143" class="testme_answer" value="143" /><label for="answer_id_143">He no can speak Spanish</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_7" id="answer_id_144" class="testme_answer" value="144" /><label for="answer_id_144">He can’t speak Spanish</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_7" id="answer_id_145" class="testme_answer" value="145" /><label for="answer_id_145">He can’t to speak Spanish</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_7" id="answer_id_146" class="testme_answer" value="146" /><label for="answer_id_146">He no speak Spanish</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">8. _______on the left in America</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_8" id="answer_id_147" class="testme_answer" value="147" /><label for="answer_id_147">You mustn’t to drive</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_8" id="answer_id_148" class="testme_answer" value="148" /><label for="answer_id_148">You not must drive</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_8" id="answer_id_149" class="testme_answer" value="149" /><label for="answer_id_149">You mustn’t driving</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_8" id="answer_id_150" class="testme_answer" value="150" /><label for="answer_id_150">You mustn’t drive</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">9. Whose desk is this?___________</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_9" id="answer_id_151" class="testme_answer" value="151" /><label for="answer_id_151">It’s of Robert</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_9" id="answer_id_152" class="testme_answer" value="152" /><label for="answer_id_152">It’s Robert</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_9" id="answer_id_153" class="testme_answer" value="153" /><label for="answer_id_153">It’s Robert’s</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_9" id="answer_id_154" class="testme_answer" value="154" /><label for="answer_id_154">It’s to Robert</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">10. Выберите верное</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_10" id="answer_id_155" class="testme_answer" value="155" /><label for="answer_id_155">He don’t smoke</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_10" id="answer_id_156" class="testme_answer" value="156" /><label for="answer_id_156">He not smoke</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_10" id="answer_id_157" class="testme_answer" value="157" /><label for="answer_id_157">He doesn’t smokes</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_10" id="answer_id_158" class="testme_answer" value="158" /><label for="answer_id_158">He doesn’t smoke</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">11. Выберите верное</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_11" id="answer_id_159" class="testme_answer" value="159" /><label for="answer_id_159">What means this word?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_11" id="answer_id_160" class="testme_answer" value="160" /><label for="answer_id_160">What does mean this word?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_11" id="answer_id_161" class="testme_answer" value="161" /><label for="answer_id_161">What does this word mean?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_11" id="answer_id_162" class="testme_answer" value="162" /><label for="answer_id_162">What is this word mean?</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">12. Walk!</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_12" id="answer_id_163" class="testme_answer" value="163" /><label for="answer_id_163">Run not</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_12" id="answer_id_164" class="testme_answer" value="164" /><label for="answer_id_164">Not run</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_12" id="answer_id_165" class="testme_answer" value="165" /><label for="answer_id_165">Don’t run</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_12" id="answer_id_166" class="testme_answer" value="166" /><label for="answer_id_166">No run</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">13. Listen! I________________to you</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_13" id="answer_id_167" class="testme_answer" value="167" /><label for="answer_id_167">am talking</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_13" id="answer_id_168" class="testme_answer" value="168" /><label for="answer_id_168">talk</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_13" id="answer_id_169" class="testme_answer" value="169" /><label for="answer_id_169">do talk</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_13" id="answer_id_170" class="testme_answer" value="170" /><label for="answer_id_170">am talk</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">14. Выберите верное</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_14" id="answer_id_171" class="testme_answer" value="171" /><label for="answer_id_171">What you are doing?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_14" id="answer_id_172" class="testme_answer" value="172" /><label for="answer_id_172">What’s you doing?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_14" id="answer_id_173" class="testme_answer" value="173" /><label for="answer_id_173">What are you doing?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_14" id="answer_id_174" class="testme_answer" value="174" /><label for="answer_id_174">What are you do?</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">15. ________________ people over there are German</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_15" id="answer_id_175" class="testme_answer" value="175" /><label for="answer_id_175">This</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_15" id="answer_id_176" class="testme_answer" value="176" /><label for="answer_id_176">That</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_15" id="answer_id_177" class="testme_answer" value="177" /><label for="answer_id_177">These</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_15" id="answer_id_178" class="testme_answer" value="178" /><label for="answer_id_178">Those</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">16. How many chairs are there?</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_16" id="answer_id_179" class="testme_answer" value="179" /><label for="answer_id_179">There are five</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_16" id="answer_id_180" class="testme_answer" value="180" /><label for="answer_id_180">There is five</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_16" id="answer_id_181" class="testme_answer" value="181" /><label for="answer_id_181">It is five</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_16" id="answer_id_182" class="testme_answer" value="182" /><label for="answer_id_182">They are five</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">17. I haven’t got__________________money</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_17" id="answer_id_183" class="testme_answer" value="183" /><label for="answer_id_183">no</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_17" id="answer_id_184" class="testme_answer" value="184" /><label for="answer_id_184">none</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_17" id="answer_id_185" class="testme_answer" value="185" /><label for="answer_id_185">some</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_17" id="answer_id_186" class="testme_answer" value="186" /><label for="answer_id_186">any</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">18. There are_______________people here already</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_18" id="answer_id_187" class="testme_answer" value="187" /><label for="answer_id_187">a few</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_18" id="answer_id_188" class="testme_answer" value="188" /><label for="answer_id_188">a little</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_18" id="answer_id_189" class="testme_answer" value="189" /><label for="answer_id_189">a lot</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_18" id="answer_id_190" class="testme_answer" value="190" /><label for="answer_id_190">much</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">19. Were there many people at the party?</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_19" id="answer_id_191" class="testme_answer" value="191" /><label for="answer_id_191">Yes, they were</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_19" id="answer_id_192" class="testme_answer" value="192" /><label for="answer_id_192">Yes, there were</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_19" id="answer_id_193" class="testme_answer" value="193" /><label for="answer_id_193">Yes, there was</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_19" id="answer_id_194" class="testme_answer" value="194" /><label for="answer_id_194">Yes, they was</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">20. Sarah__________out last night</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_20" id="answer_id_195" class="testme_answer" value="195" /><label for="answer_id_195">didn’t went</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_20" id="answer_id_196" class="testme_answer" value="196" /><label for="answer_id_196">didn’t goes</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_20" id="answer_id_197" class="testme_answer" value="197" /><label for="answer_id_197">didn’t go</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_20" id="answer_id_198" class="testme_answer" value="198" /><label for="answer_id_198">no went</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">21. I went to America _____________English</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_21" id="answer_id_199" class="testme_answer" value="199" /><label for="answer_id_199">for learning</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_21" id="answer_id_200" class="testme_answer" value="200" /><label for="answer_id_200">for to learn</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_21" id="answer_id_201" class="testme_answer" value="201" /><label for="answer_id_201">to learn</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_21" id="answer_id_202" class="testme_answer" value="202" /><label for="answer_id_202">to learning</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">22. She’s___________than I am</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_22" id="answer_id_203" class="testme_answer" value="203" /><label for="answer_id_203">older</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_22" id="answer_id_204" class="testme_answer" value="204" /><label for="answer_id_204">more old</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_22" id="answer_id_205" class="testme_answer" value="205" /><label for="answer_id_205">more older</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_22" id="answer_id_206" class="testme_answer" value="206" /><label for="answer_id_206">most older</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">23. He’s ____________ at tennis than football</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_23" id="answer_id_207" class="testme_answer" value="207" /><label for="answer_id_207">more good</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_23" id="answer_id_208" class="testme_answer" value="208" /><label for="answer_id_208">more better</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_23" id="answer_id_209" class="testme_answer" value="209" /><label for="answer_id_209">better</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_23" id="answer_id_210" class="testme_answer" value="210" /><label for="answer_id_210">best</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">24. You’re not___________I am</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_24" id="answer_id_211" class="testme_answer" value="211" /><label for="answer_id_211">as tall than</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_24" id="answer_id_212" class="testme_answer" value="212" /><label for="answer_id_212">so tall as</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_24" id="answer_id_213" class="testme_answer" value="213" /><label for="answer_id_213">as taller as</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_24" id="answer_id_214" class="testme_answer" value="214" /><label for="answer_id_214">tall as</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">25. I_________________TV this evening</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_25" id="answer_id_215" class="testme_answer" value="215" /><label for="answer_id_215">am going to watch</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_25" id="answer_id_216" class="testme_answer" value="216" /><label for="answer_id_216">go to watch</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_25" id="answer_id_217" class="testme_answer" value="217" /><label for="answer_id_217">watch</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_25" id="answer_id_218" class="testme_answer" value="218" /><label for="answer_id_218">watching</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">26. Выберите верное</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_26" id="answer_id_219" class="testme_answer" value="219" /><label for="answer_id_219">What time is the train going to leave?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_26" id="answer_id_220" class="testme_answer" value="220" /><label for="answer_id_220">What time the train is going to leave?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_26" id="answer_id_221" class="testme_answer" value="221" /><label for="answer_id_221">What time is going to leave the train?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_26" id="answer_id_222" class="testme_answer" value="222" /><label for="answer_id_222">What time going to leave is the train?</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">27. I enjoy________________early</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_27" id="answer_id_223" class="testme_answer" value="223" /><label for="answer_id_223">get up</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_27" id="answer_id_224" class="testme_answer" value="224" /><label for="answer_id_224">getting up</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_27" id="answer_id_225" class="testme_answer" value="225" /><label for="answer_id_225">to get up</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_27" id="answer_id_226" class="testme_answer" value="226" /><label for="answer_id_226">to getting up</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">28. Выберите верное</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_28" id="answer_id_227" class="testme_answer" value="227" /><label for="answer_id_227">You will come with me tomorrow?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_28" id="answer_id_228" class="testme_answer" value="228" /><label for="answer_id_228">Do you come with me tomorrow?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_28" id="answer_id_229" class="testme_answer" value="229" /><label for="answer_id_229">Come you with me tomorrow?</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_28" id="answer_id_230" class="testme_answer" value="230" /><label for="answer_id_230">Will you come with me tomorrow?</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">29. Oh no!______________ my key</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_29" id="answer_id_231" class="testme_answer" value="231" /><label for="answer_id_231">I lose</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_29" id="answer_id_232" class="testme_answer" value="232" /><label for="answer_id_232">I’m lost</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_29" id="answer_id_233" class="testme_answer" value="233" /><label for="answer_id_233">I’ve lose</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_29" id="answer_id_234" class="testme_answer" value="234" /><label for="answer_id_234">I’ve lost</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">30. _____________English since I was 12</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_30" id="answer_id_235" class="testme_answer" value="235" /><label for="answer_id_235">I’m studied</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_30" id="answer_id_236" class="testme_answer" value="236" /><label for="answer_id_236">I’ve studied</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_30" id="answer_id_237" class="testme_answer" value="237" /><label for="answer_id_237">I learn</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_30" id="answer_id_238" class="testme_answer" value="238" /><label for="answer_id_238">I’ve studying</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">31. I spoke to a girl________ was from Spain</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_31" id="answer_id_239" class="testme_answer" value="239" /><label for="answer_id_239">what</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_31" id="answer_id_240" class="testme_answer" value="240" /><label for="answer_id_240">which</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_31" id="answer_id_241" class="testme_answer" value="241" /><label for="answer_id_241">who</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_31" id="answer_id_242" class="testme_answer" value="242" /><label for="answer_id_242">whose</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">32. I was in America____________three weeks</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_32" id="answer_id_243" class="testme_answer" value="243" /><label for="answer_id_243">during</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_32" id="answer_id_244" class="testme_answer" value="244" /><label for="answer_id_244">for</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_32" id="answer_id_245" class="testme_answer" value="245" /><label for="answer_id_245"> in</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_32" id="answer_id_246" class="testme_answer" value="246" /><label for="answer_id_246">on</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">33. When I looked out of the window,___________________.</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_33" id="answer_id_247" class="testme_answer" value="247" /><label for="answer_id_247">it was snowing</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_33" id="answer_id_248" class="testme_answer" value="248" /><label for="answer_id_248">it were snowing</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_33" id="answer_id_249" class="testme_answer" value="249" /><label for="answer_id_249">it snowed</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_33" id="answer_id_250" class="testme_answer" value="250" /><label for="answer_id_250">it’s snowing</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">34. He left without__________________goodbye</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_34" id="answer_id_251" class="testme_answer" value="251" /><label for="answer_id_251">to say</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_34" id="answer_id_252" class="testme_answer" value="252" /><label for="answer_id_252">saying</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_34" id="answer_id_253" class="testme_answer" value="253" /><label for="answer_id_253">say</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_34" id="answer_id_254" class="testme_answer" value="254" /><label for="answer_id_254">said</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">35. I don’t mind_______________________</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_35" id="answer_id_255" class="testme_answer" value="255" /><label for="answer_id_255">waiting</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_35" id="answer_id_256" class="testme_answer" value="256" /><label for="answer_id_256">I wait</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_35" id="answer_id_257" class="testme_answer" value="257" /><label for="answer_id_257">to wait</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_35" id="answer_id_258" class="testme_answer" value="258" /><label for="answer_id_258">that I wait</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">36. He speaks Italian______________________</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_36" id="answer_id_259" class="testme_answer" value="259" /><label for="answer_id_259">good but slow</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_36" id="answer_id_260" class="testme_answer" value="260" /><label for="answer_id_260">well but slow</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_36" id="answer_id_261" class="testme_answer" value="261" /><label for="answer_id_261">good but slowly</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_36" id="answer_id_262" class="testme_answer" value="262" /><label for="answer_id_262">well but slowly</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">37. If you _____________the box, you’ll find a present</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_37" id="answer_id_263" class="testme_answer" value="263" /><label for="answer_id_263">opened</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_37" id="answer_id_264" class="testme_answer" value="264" /><label for="answer_id_264">would open</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_37" id="answer_id_265" class="testme_answer" value="265" /><label for="answer_id_265">open</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_37" id="answer_id_266" class="testme_answer" value="266" /><label for="answer_id_266">will open</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">38. I like this song.</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_38" id="answer_id_267" class="testme_answer" value="267" /><label for="answer_id_267">So do I</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_38" id="answer_id_268" class="testme_answer" value="268" /><label for="answer_id_268">So am I</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_38" id="answer_id_269" class="testme_answer" value="269" /><label for="answer_id_269">So I like</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_38" id="answer_id_270" class="testme_answer" value="270" /><label for="answer_id_270">So I do</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">39. You ________________speak perfect English to get this job</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_39" id="answer_id_271" class="testme_answer" value="271" /><label for="answer_id_271">don’t have to</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_39" id="answer_id_272" class="testme_answer" value="272" /><label for="answer_id_272">mustn’t</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_39" id="answer_id_273" class="testme_answer" value="273" /><label for="answer_id_273">don’t have</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_39" id="answer_id_274" class="testme_answer" value="274" /><label for="answer_id_274">not have to</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">40. English___________________all over the world</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_40" id="answer_id_275" class="testme_answer" value="275" /><label for="answer_id_275">are spoken</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_40" id="answer_id_276" class="testme_answer" value="276" /><label for="answer_id_276">is speaking</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_40" id="answer_id_277" class="testme_answer" value="277" /><label for="answer_id_277">is spoke</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_40" id="answer_id_278" class="testme_answer" value="278" /><label for="answer_id_278">is spoken</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">41. My phone_________________</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_41" id="answer_id_279" class="testme_answer" value="279" /><label for="answer_id_279">have been stolen</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_41" id="answer_id_280" class="testme_answer" value="280" /><label for="answer_id_280">has stolen</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_41" id="answer_id_281" class="testme_answer" value="281" /><label for="answer_id_281">has been stole</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_41" id="answer_id_282" class="testme_answer" value="282" /><label for="answer_id_282">has been stolen</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">42. If you______it, it would break</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_42" id="answer_id_283" class="testme_answer" value="283" /><label for="answer_id_283">would drop</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_42" id="answer_id_284" class="testme_answer" value="284" /><label for="answer_id_284">will drop</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_42" id="answer_id_285" class="testme_answer" value="285" /><label for="answer_id_285">had dropped</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_42" id="answer_id_286" class="testme_answer" value="286" /><label for="answer_id_286">dropped</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">43. _________________this letter for me</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_43" id="answer_id_287" class="testme_answer" value="287" /><label for="answer_id_287">I want that you mail</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_43" id="answer_id_288" class="testme_answer" value="288" /><label for="answer_id_288">I want you to mail</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_43" id="answer_id_289" class="testme_answer" value="289" /><label for="answer_id_289">I want you mail</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_43" id="answer_id_290" class="testme_answer" value="290" /><label for="answer_id_290">I want you mailing</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">44. I didn’t speak to_____________</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_44" id="answer_id_291" class="testme_answer" value="291" /><label for="answer_id_291">anybody</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_44" id="answer_id_292" class="testme_answer" value="292" /><label for="answer_id_292">something</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_44" id="answer_id_293" class="testme_answer" value="293" /><label for="answer_id_293">nobody</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_44" id="answer_id_294" class="testme_answer" value="294" /><label for="answer_id_294">somebody</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">45. These machines__________________</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_45" id="answer_id_295" class="testme_answer" value="295" /><label for="answer_id_295">need overhauling</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_45" id="answer_id_296" class="testme_answer" value="296" /><label for="answer_id_296">need overhauled</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_45" id="answer_id_297" class="testme_answer" value="297" /><label for="answer_id_297">need to overhaul</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_45" id="answer_id_298" class="testme_answer" value="298" /><label for="answer_id_298">need to overhauling</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">46. Have you got any idea what___________________?</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_46" id="answer_id_299" class="testme_answer" value="299" /><label for="answer_id_299">am I required to do</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_46" id="answer_id_300" class="testme_answer" value="300" /><label for="answer_id_300">they require me to do</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_46" id="answer_id_301" class="testme_answer" value="301" /><label for="answer_id_301">I require to do</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_46" id="answer_id_302" class="testme_answer" value="302" /><label for="answer_id_302">I am required to do</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">47. I suppose, given better weather, I__________ out</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_47" id="answer_id_303" class="testme_answer" value="303" /><label for="answer_id_303">would gone</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_47" id="answer_id_304" class="testme_answer" value="304" /><label for="answer_id_304">can go</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_47" id="answer_id_305" class="testme_answer" value="305" /><label for="answer_id_305">should</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_47" id="answer_id_306" class="testme_answer" value="306" /><label for="answer_id_306">would have gone</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">48. Whenever the bell rang, our stupid dog______rush to the door barking</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_48" id="answer_id_307" class="testme_answer" value="307" /><label for="answer_id_307">will</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_48" id="answer_id_308" class="testme_answer" value="308" /><label for="answer_id_308">would</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_48" id="answer_id_309" class="testme_answer" value="309" /><label for="answer_id_309">made as if to</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_48" id="answer_id_310" class="testme_answer" value="310" /><label for="answer_id_310">should</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">49. If only_____ time to do a bit more sightseeing</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_49" id="answer_id_311" class="testme_answer" value="311" /><label for="answer_id_311">I have</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_49" id="answer_id_312" class="testme_answer" value="312" /><label for="answer_id_312">I had</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_49" id="answer_id_313" class="testme_answer" value="313" /><label for="answer_id_313">I should have</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_49" id="answer_id_314" class="testme_answer" value="314" /><label for="answer_id_314">I would have</label><br />
+                    </div>
+                </div>
+                <div class="testme_question">
+                    <div class="testme_question_text">50. It really is high time______________.</div><br /><div class="testme_answer_block">
+                        <input type="radio" name="answer_50" id="answer_id_315" class="testme_answer" value="315" /><label for="answer_id_315">we are going</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_50" id="answer_id_316" class="testme_answer" value="316" /><label for="answer_id_316">we were going</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_50" id="answer_id_317" class="testme_answer" value="317" /><label for="answer_id_317">had gone</label><br />
+                    </div><div class="testme_answer_block">
+                        <input type="radio" name="answer_50" id="answer_id_318" class="testme_answer" value="318" /><label for="answer_id_318">we should go</label><br />
+                    </div>
+                </div>
+                <input type="submit" name="action" id="testme_button" value="Показать результаты" style="margin-bottom: 20px;" onclick="showResult()" />
+                <input type="hidden" name="testme_id" value="16" />
+                <input type="hidden" name="testme_total_q" value="50" />
+            </form>*@
+    </div>
+    @*<script>
+            showResult(){
+                alert("Пропущены следующие вопросы:\n" + errorNote + "\n\nЧтобы посмотреть результаты теста, надо ответить на все вопросы");
+            }
+        </script>*@
+
+    <div style=" text-align: left;margin-left: 50px;">
+        @*<p id="test">1.&nbsp;&ldquo;My name&rsquo;s Tamara. I __________ twenty-one years old.&rdquo;</p>
+            <form name="Q1">
+                <p><input onclick="clearOne(null,S12,S13,S14);" name="S11" size="20" type="checkbox" value="ON" />is&nbsp;&nbsp; <input onclick="clearOne(S11,null,S13,S14);" name="S12" size="20" type="checkbox" value="ON" />am &nbsp;&nbsp; <input onclick="clearOne(S11,S12,null,S14);" name="S13" size="20" type="checkbox" value="ON" />have&nbsp;&nbsp; <input onclick="clearOne(S11,S12,S13,null);" name="S14" size="20" type="checkbox" value="ON" />got</p>
+            </form>
+            <p id="test">2.&nbsp;&ldquo;Is Igor a teacher?&rdquo; &ldquo; No, __________ .&rdquo;</p>
+            <form name="Q2">
+                <p><input onclick="clearOne(null,S22,S23,S24);" name="S21" size="20" type="checkbox" value="ON" />he not&nbsp;&nbsp; <input onclick="clearOne(S21,null,S23,S24);" name="S22" size="20" type="checkbox" value="ON" />it isn't&nbsp;&nbsp; <input onclick="clearOne(S21,S22,null,S24);" name="S23" size="20" type="checkbox" value="ON" />he doesn't&nbsp;&nbsp; <input onclick="clearOne(S21,S22,S23,null);" name="S24" size="20" type="checkbox" value="ON" />he isn&rsquo;t</p>
+            </form>
+            <p id="test">3.&nbsp;Igor and Tamara are __________ people.</p>
+            <form name="Q3">
+                <p><input onclick="clearOne(null,S32,S33,S34);" name="S31" size="20" type="checkbox" value="ON" />teachers &nbsp; <input onclick="clearOne(S31,null,S33,S34);" name="S32" size="20" type="checkbox" value="ON" />nice&nbsp;&nbsp; <input onclick="clearOne(S31,S32,null,S34);" name="S33" size="20" type="checkbox" value="ON" />long&nbsp;&nbsp; <input onclick="clearOne(S31,S32,S33,null);" name="S34" size="20" type="checkbox" value="ON" />intelligents&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">4.&nbsp;My brother&nbsp; __________ like to go to school.</p>
+            <form name="Q4">
+                <p><input onclick="clearOne(null,S42,S43,S44);" name="S41" size="20" type="checkbox" value="ON" />doesn&rsquo;t&nbsp;&nbsp; <input onclick="clearOne(S41,null,S43,S44);" name="S42" size="20" type="checkbox" value="ON" />don't&nbsp;&nbsp; <input onclick="clearOne(S41,S42,null,S44);" name="S43" size="20" type="checkbox" value="ON" />not&nbsp;&nbsp; <input onclick="clearOne(S41,S42,S43,null);" name="S44" size="20" type="checkbox" value="ON" />hasn't&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">5.&nbsp;My friend and me __________.</p>
+            <form name="Q5">
+                <p><input onclick="clearOne(null,S52,S53,S54);" name="S51" size="20" type="checkbox" value="ON" />like rock both&nbsp;&nbsp; <input onclick="clearOne(S51,null,S53,S54);" name="S52" size="20" type="checkbox" value="ON" />both like rock&nbsp;&nbsp; <input onclick="clearOne(S51,S52,null,S54);" name="S53" size="20" type="checkbox" value="ON" />both rock like&nbsp;&nbsp; <input onclick="clearOne(S51,S52,S53,null);" name="S54" size="20" type="checkbox" value="ON" />like both rock &nbsp;&nbsp;</p>
+            </form>
+            <p id="test">6.&nbsp;I __________ the Beatles last year, but now I do.</p>
+            <form name="Q6">
+                <p><input onclick="clearOne(null,S62,S63,S64);" name="S61" size="20" type="checkbox" value="ON" />not like&nbsp;&nbsp; <input onclick="clearOne(S61,null,S63,S64);" name="S62" size="20" type="checkbox" value="ON" />don't like&nbsp;&nbsp; <input onclick="clearOne(S61,S62,null,S64);" name="S63" size="20" type="checkbox" value="ON" />didn&rsquo;t like&nbsp; <input onclick="clearOne(S61,S62,S63,null);" name="S64" size="20" type="checkbox" value="ON" />didn't liked</p>
+            </form>
+            <p id="test">7.&nbsp;__________ milk in the bottle.</p>
+            <form name="Q7">
+                <p><input onclick="clearOne(null,S72,S73,S74);" name="S71" size="20" type="checkbox" value="ON" />it is any&nbsp;&nbsp; <input onclick="clearOne(S71,null,S73,S74);" name="S72" size="20" type="checkbox" value="ON" />there is any&nbsp;&nbsp; <input onclick="clearOne(S71,S72,null,S74);" name="S73" size="20" type="checkbox" value="ON" />there is some&nbsp;&nbsp; <input onclick="clearOne(S71,S72,S73,null);" name="S74" size="20" type="checkbox" value="ON" />there are some&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">8.&nbsp;My mother&nbsp; __________ me to buy some bread from the shop.</p>
+            <form name="Q8">
+                <p><input onclick="clearOne(null,S82,S83,S84);" name="S81" size="20" type="checkbox" value="ON" />said&nbsp;&nbsp; <input onclick="clearOne(S81,null,S83,S84);" name="S82" size="20" type="checkbox" value="ON" />told&nbsp;&nbsp; <input onclick="clearOne(S81,S82,null,S84);" name="S83" size="20" type="checkbox" value="ON" />say to&nbsp;&nbsp; <input onclick="clearOne(S81,S82,S83,null);" name="S84" size="20" type="checkbox" value="ON" />told to&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">9.&nbsp;Have you __________ been to Paris?</p>
+            <form name="Q9">
+                <p><input onclick="clearOne(null,S92,S93,S94);" name="S91" size="20" type="checkbox" value="ON" />often&nbsp;&nbsp; <input onclick="clearOne(S91,null,S93,S94);" name="S92" size="20" type="checkbox" value="ON" />never&nbsp;&nbsp; <input onclick="clearOne(S91,S92,null,S94);" name="S93" size="20" type="checkbox" value="ON" />usually&nbsp;&nbsp; <input onclick="clearOne(S91,S92,S93,null);" name="S94" size="20" type="checkbox" value="ON" />ever</p>
+            </form>
+            <p id="test">10.&nbsp;Tamara didn't meet&nbsp; __________ friends in the street.</p>
+            <form name="Q10">
+                <p><input onclick="clearOne(null,S102,S103,S104);" name="S101" size="20" type="checkbox" value="ON" />none&nbsp;&nbsp; <input onclick="clearOne(S101,null,S103,S104);" name="S102" size="20" type="checkbox" value="ON" />any&nbsp;&nbsp; <input onclick="clearOne(S101,S102,null,S104);" name="S103" size="20" type="checkbox" value="ON" />someone&nbsp;&nbsp; <input onclick="clearOne(S101,S102,S103,null);" name="S104" size="20" type="checkbox" value="ON" />a</p>
+            </form>
+            <p id="test">11.&nbsp;&ldquo;__________ you speak English Igor?&rdquo; &ldquo;Yes, a little.&rdquo;</p>
+            <form name="Q11">
+                <p><input onclick="clearOne(null,S112,S113,S114);" name="S111" size="20" type="checkbox" value="ON" />have&nbsp;&nbsp; <input onclick="clearOne(S111,null,S113,S114);" name="S112" size="20" type="checkbox" value="ON" />has&nbsp;&nbsp; <input onclick="clearOne(S111,S112,null,S114);" name="S113" size="20" type="checkbox" value="ON" />can&nbsp;&nbsp; <input onclick="clearOne(S111,S112,S113,null);" name="S114" size="20" type="checkbox" value="ON" />are&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">12.&nbsp;&ldquo;We can see an English film __________ Thursday night.&rdquo;</p>
+            <form name="Q12">
+                <p><input onclick="clearOne(null,S122,S123,S124);" name="S121" size="20" type="checkbox" value="ON" />on&nbsp;&nbsp; <input onclick="clearOne(S121,null,S123,S124);" name="S122" size="20" type="checkbox" value="ON" />in&nbsp;&nbsp; <input onclick="clearOne(S121,S122,null,S124);" name="S123" size="20" type="checkbox" value="ON" />at&nbsp;&nbsp; <input onclick="clearOne(S121,S122,S123,null);" name="S124" size="20" type="checkbox" value="ON" />of&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">13.&nbsp;&ldquo;Oh, I __________ this Thursday.&rdquo;</p>
+            <form name="Q13">
+                <p><input onclick="clearOne(null,S132,S133,S134);" name="S131" size="20" type="checkbox" value="ON" />am work&nbsp;&nbsp; <input onclick="clearOne(S131,null,S133,S134);" name="S132" size="20" type="checkbox" value="ON" />work&nbsp;&nbsp; <input onclick="clearOne(S131,S132,null,S134);" name="S133" size="20" type="checkbox" value="ON" />am working&nbsp;&nbsp; <input onclick="clearOne(S131,S132,S133,null);" name="S134" size="20" type="checkbox" value="ON" />be working&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">14.&nbsp;&ldquo;5th Element __________ to be shown at the weekend.&rdquo;</p>
+            <form name="Q14">
+                <p><input onclick="clearOne(null,S142,S143,S144);" name="S141" size="20" type="checkbox" value="ON" />have &nbsp;&nbsp; <input onclick="clearOne(S141,null,S143,S144);" name="S142" size="20" type="checkbox" value="ON" />can&nbsp;&nbsp; <input onclick="clearOne(S141,S142,null,S144);" name="S143" size="20" type="checkbox" value="ON" />is going&nbsp;&nbsp; <input onclick="clearOne(S141,S142,S143,null);" name="S144" size="20" type="checkbox" value="ON" />will&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">15.&nbsp;&ldquo;Oh I __________ 5th Element. It&rsquo;s a good film".</p>
+            <form name="Q15">
+                <p><input onclick="clearOne(null,S152,S153,S154);" name="S151" size="20" type="checkbox" value="ON" />already seen&nbsp;&nbsp; <input onclick="clearOne(S151,null,S153,S154);" name="S152" size="20" type="checkbox" value="ON" />have saw&nbsp;&nbsp; <input onclick="clearOne(S151,S152,null,S154);" name="S153" size="20" type="checkbox" value="ON" />have already seen&nbsp;&nbsp; <input onclick="clearOne(S151,S152,S153,null);" name="S154" size="20" type="checkbox" value="ON" />seen already&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">16.&nbsp;&ldquo;Yes, it is but Titanic is __________.&rdquo;</p>
+            <form name="Q16">
+                <p><input onclick="clearOne(null,S162,S163,S164);" name="S161" size="20" type="checkbox" value="ON" />badly&nbsp;&nbsp; <input onclick="clearOne(S161,null,S163,S164);" name="S162" size="20" type="checkbox" value="ON" />best&nbsp;&nbsp; <input onclick="clearOne(S161,S162,null,S164);" name="S163" size="20" type="checkbox" value="ON" />well&nbsp;&nbsp; <input onclick="clearOne(S161,S162,S163,null);" name="S164" size="20" type="checkbox" value="ON" />better&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">17.&nbsp;&ldquo;We __________ go to the cinema a lot but we don&rsquo;t go very often now.&rdquo;</p>
+            <form name="Q17">
+                <p><input onclick="clearOne(null,S172,S173,S174);" name="S171" size="20" type="checkbox" value="ON" />use&nbsp;&nbsp; <input onclick="clearOne(S171,null,S173,S174);" name="S172" size="20" type="checkbox" value="ON" />did used&nbsp;&nbsp; <input onclick="clearOne(S171,S172,null,S174);" name="S173" size="20" type="checkbox" value="ON" />used to&nbsp;&nbsp; <input onclick="clearOne(S171,S172,S173,null);" name="S174" size="20" type="checkbox" value="ON" />used&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">18.&nbsp;&ldquo;We __________ too much since Christmas.&rdquo;</p>
+            <form name="Q18">
+                <p><input onclick="clearOne(null,S182,S183,S184);" name="S181" size="20" type="checkbox" value="ON" />'ve been working&nbsp;&nbsp; <input onclick="clearOne(S181,null,S183,S184);" name="S182" size="20" type="checkbox" value="ON" />'ve been work&nbsp;&nbsp; <input onclick="clearOne(S181,S182,null,S184);" name="S183" size="20" type="checkbox" value="ON" />will be working&nbsp;&nbsp; <input onclick="clearOne(S181,S182,S183,null);" name="S184" size="20" type="checkbox" value="ON" />are working&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">19.&nbsp;&ldquo;I have exams in June so I __________ study every day".</p>
+            <form name="Q19">
+                <p><input onclick="clearOne(null,S192,S193,S194);" name="S191" size="20" type="checkbox" value="ON" />should to&nbsp;&nbsp; <input onclick="clearOne(S191,null,S193,S194);" name="S192" size="20" type="checkbox" value="ON" />am&nbsp; &nbsp;&nbsp; <input onclick="clearOne(S191,S192,null,S194);" name="S193" size="20" type="checkbox" value="ON" />have to&nbsp;&nbsp; <input onclick="clearOne(S191,S192,S193,null);" name="S194" size="20" type="checkbox" value="ON" />must to&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">20.&nbsp;&ldquo;If you __________ the exams, we&rsquo;ll take a long holiday.&rdquo;</p>
+            <form name="Q20">
+                <p><input onclick="clearOne(null,S202,S203,S204);" name="S201" size="20" type="checkbox" value="ON" />passing&nbsp;&nbsp; <input onclick="clearOne(S201,null,S203,S204);" name="S202" size="20" type="checkbox" value="ON" />pass&nbsp;&nbsp; <input onclick="clearOne(S201,S202,null,S204);" name="S203" size="20" type="checkbox" value="ON" />will pass&nbsp;&nbsp; <input onclick="clearOne(S201,S202,S203,null);" name="S204" size="20" type="checkbox" value="ON" />to pass&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">21.&nbsp;Igor __________ in a bank when he met Tamara.</p>
+            <form name="Q21">
+                <p><input onclick="clearOne(null,S212,S213,S214);" name="S211" size="20" type="checkbox" value="ON" />is working&nbsp;&nbsp; <input onclick="clearOne(S211,null,S213,S214);" name="S212" size="20" type="checkbox" value="ON" />has worked&nbsp;&nbsp; <input onclick="clearOne(S211,S212,null,S214);" name="S213" size="20" type="checkbox" value="ON" />works&nbsp;&nbsp; <input onclick="clearOne(S211,S212,S213,null);" name="S214" size="20" type="checkbox" value="ON" />was working</p>
+            </form>
+            <p id="test">22.&nbsp;There was a robbery at the bank and all the money __________.</p>
+            <form name="Q22">
+                <p><input onclick="clearOne(null,S222,S223,S224);" name="S221" size="20" type="checkbox" value="ON" />was stealing&nbsp;&nbsp; <input onclick="clearOne(S221,null,S223,S224);" name="S222" size="20" type="checkbox" value="ON" />stolen&nbsp;&nbsp; <input onclick="clearOne(S221,S222,null,S224);" name="S223" size="20" type="checkbox" value="ON" />was stolen&nbsp;&nbsp; <input onclick="clearOne(S221,S222,S223,null);" name="S224" size="20" type="checkbox" value="ON" />was being stolen</p>
+            </form>
+            <p id="test">23.&nbsp;Ivan had to do more work. Vika thinks he __________ take it easy and relax.</p>
+            <form name="Q23">
+                <p><input onclick="clearOne(null,S232,S233,S234);" name="S231" size="20" type="checkbox" value="ON" />should&nbsp;&nbsp; <input onclick="clearOne(S231,null,S233,S234);" name="S232" size="20" type="checkbox" value="ON" />has to&nbsp;&nbsp; <input onclick="clearOne(S231,S232,null,S234);" name="S233" size="20" type="checkbox" value="ON" />might to&nbsp;&nbsp; <input onclick="clearOne(S231,S232,S233,null);" name="S234" size="20" type="checkbox" value="ON" />must&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">24.&nbsp;If Igor __________ time, he would go out more often.</p>
+            <form name="Q24">
+                <p><input onclick="clearOne(null,S242,S243,S244);" name="S241" size="20" type="checkbox" value="ON" />would have more&nbsp;&nbsp; <input onclick="clearOne(S241,null,S243,S244);" name="S242" size="20" type="checkbox" value="ON" />had more&nbsp;&nbsp; <input onclick="clearOne(S241,S242,null,S244);" name="S243" size="20" type="checkbox" value="ON" />will have more&nbsp;&nbsp; <input onclick="clearOne(S241,S242,S243,null);" name="S244" size="20" type="checkbox" value="ON" />would had&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">25.&nbsp;As soon as Ivan has more money, __________ a car.</p>
+            <form name="Q25">
+                <p><input onclick="clearOne(null,S252,S253,S254);" name="S251" size="20" type="checkbox" value="ON" />he buy&nbsp;&nbsp; <input onclick="clearOne(S251,null,S253,S254);" name="S252" size="20" type="checkbox" value="ON" />he had bought&nbsp;&nbsp; <input onclick="clearOne(S251,S252,null,S254);" name="S253" size="20" type="checkbox" value="ON" />he&rsquo;ll buying&nbsp;&nbsp; <input onclick="clearOne(S251,S252,S253,null);" name="S254" size="20" type="checkbox" value="ON" />he&rsquo;ll buy&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">26.&nbsp;The Titanic__________ 11 Oscars.</p>
+            <form name="Q26">
+                <p><input onclick="clearOne(null,S262,S263,S264);" name="S261" size="20" type="checkbox" value="ON" />is given&nbsp;&nbsp; <input onclick="clearOne(S261,null,S263,S264);" name="S262" size="20" type="checkbox" value="ON" />was given&nbsp;&nbsp; <input onclick="clearOne(S261,S262,null,S264);" name="S263" size="20" type="checkbox" value="ON" />was gave&nbsp;&nbsp; <input onclick="clearOne(S261,S262,S263,null);" name="S264" size="20" type="checkbox" value="ON" />gave&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">27.&nbsp;Tamara said she&nbsp; __________ Coca Cola.</p>
+            <form name="Q27">
+                <p><input onclick="clearOne(null,S272,S273,S274);" name="S271" size="20" type="checkbox" value="ON" />didn&rsquo;t like&nbsp;&nbsp; <input onclick="clearOne(S271,null,S273,S274);" name="S272" size="20" type="checkbox" value="ON" />don&rsquo;t like&nbsp;&nbsp; <input onclick="clearOne(S271,S272,null,S274);" name="S273" size="20" type="checkbox" value="ON" />might like&nbsp;&nbsp; <input onclick="clearOne(S271,S272,S273,null);" name="S274" size="20" type="checkbox" value="ON" />won't like &nbsp;&nbsp;</p>
+            </form>
+            <p id="test">28.&nbsp;By next year Igor __________ from the University.</p>
+            <form name="Q28">
+                <p><input onclick="clearOne(null,S282,S283,S284);" name="S281" size="20" type="checkbox" value="ON" />will have graduated&nbsp;&nbsp; <input onclick="clearOne(S281,null,S283,S284);" name="S282" size="20" type="checkbox" value="ON" />graduates&nbsp;&nbsp; <input onclick="clearOne(S281,S282,null,S284);" name="S283" size="20" type="checkbox" value="ON" />graduated&nbsp;&nbsp; <input onclick="clearOne(S281,S282,S283,null);" name="S284" size="20" type="checkbox" value="ON" />will be graduating&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">29.&nbsp;Yesterday Tamara said that she __________ in three months.</p>
+            <form name="Q29">
+                <p><input onclick="clearOne(null,S292,S293,S294);" name="S291" size="20" type="checkbox" value="ON" />will marrying&nbsp;&nbsp; <input onclick="clearOne(S291,null,S293,S294);" name="S292" size="20" type="checkbox" value="ON" />has married&nbsp;&nbsp; <input onclick="clearOne(S291,S292,null,S294);" name="S293" size="20" type="checkbox" value="ON" />marrying&nbsp;&nbsp; <input onclick="clearOne(S291,S292,S293,null);" name="S294" size="20" type="checkbox" value="ON" />would marry&nbsp;&nbsp;</p>
+            </form>
+            <p id="test">30.&nbsp;It's cold today,&nbsp; __________?</p>
+            <form name="Q30">
+                <p><input onclick="clearOne(null,S302,S303,S304);" name="S301" size="20" type="checkbox" value="ON" />isn't it&nbsp;&nbsp; <input onclick="clearOne(S301,null,S303,S304);" name="S302" size="20" type="checkbox" value="ON" />hasn't it&nbsp;&nbsp; <input onclick="clearOne(S301,S302,null,S304);" name="S303" size="20" type="checkbox" value="ON" />it is&nbsp;&nbsp; <input onclick="clearOne(S301,S302,S303,null);" name="S304" size="20" type="checkbox" value="ON" />has it&nbsp;&nbsp;</p>
+            </form>
+            <p>Если вы закончили работу с тестом, нажмите на кнопку "Результат тестирования", и вы узнаете свой уровень знаний и количество правильных ответов.</p>
+            <form name="checker">
+                <div><input type="button" onclick="clearAll()" name="B1" size="20" type="button" value="Сброс" /> <input type="button" onclick="testAll()" name="B2" size="20" type="button" value="Результат тестирования" /> &nbsp;&nbsp;<span id="small">Количество правильных ответов:</span>&nbsp;<input class="text" name="Results" size="2" type="text" /><br /><br /><br /></div>
+            </form>*@
+    </div>
+}

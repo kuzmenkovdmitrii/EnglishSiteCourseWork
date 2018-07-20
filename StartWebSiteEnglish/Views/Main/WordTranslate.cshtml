@@ -1,0 +1,105 @@
+﻿@using StartWebSiteEnglish.Models
+@model List<Quastion<Words>>
+
+@{
+    ViewBag.Title = "WordTranslate";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Links{
+    <link href="~/Content/Grammer/style_test_grammer.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="~/Content/Main/jQuizler.css" rel="stylesheet" />
+
+}
+
+@section Body{
+    <h2>Слово - перевод</h2>
+    <div class="block-test">
+        <div class="test" style="display: table;">
+            <div id="jQuizler" class="main-quiz-holder">
+                <button class="btn btn-large">Начать</button>
+                @*<div id="jQuizler" class="main-quiz-holder" style="text-align: left;">
+                        <div class="intro" style="display: block;">
+                            <button class="btn btn-large">Начать</button>
+                        </div>
+                        <div class="results slide-container question" style="display:block"></div>
+                        @for(int i=0; i<Model.Count(); i++)
+                        {
+                            int idi = i + 1;
+                            <div id="question-@idi" class="slide-container question" style="display:block;">
+                                <h3 class="quest" id="@Model[i].quastion.Id">@Model[i].quastion.Word</h3>
+                                <ul class="answers">
+                                    <li class="btn" answerId="@Model[i].answers[0].Id">@Model[i].answers[0].Translation</li>
+                                    <li class="btn" answerId="@Model[i].answers[1].Id">@Model[i].answers[1].Translation</li>
+                                    <li class="btn" answerId="@Model[i].answers[2].Id">@Model[i].answers[2].Translation</li>
+                                    <li class="btn" answerId="@Model[i].answers[3].Id">@Model[i].answers[3].Translation</li>
+                                    <li class="btn">Не знаю :(</li>
+                                </ul>
+                                <div class="nav-container">
+                                    <div class="notice alert alert-info">Выберите ответ</div>
+                                    <button class="next btn btn-success" id="button-next">Следующий <i class="icon-arrow-right icon-white"></i></button>
+                                    <div style="clear:both"></div>
+                               </div>
+                                <div class="progress progress-info progress-striped">
+                                   <div id="percent" class="bar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        }
+                    </div>*@
+            </div>
+
+        </div>
+
+        @*<div class="button">
+                <button class="oganesyan"><a class="link" href="/Main/Training" style=" color: #fff; text-decoration: none;">Закончить</a></button>
+            </div>*@
+    </div>
+    <script src="~/Scripts/tests/firsttest_questions.js"></script>
+    <script src="~/Scripts/tests/jQuizler.js"></script>
+
+    <script>
+        var question = [{
+            type: "choose",
+            question: '@Model[0].quastion.Word',
+            answers: [
+                '@Model[0].answers[0].Translation',
+                '@Model[0].answers[1].Translation',
+                '@Model[0].answers[2].Translation',
+                '@Model[0].answers[3].Translation'
+            ],
+            correct: [@Model[0].correctAnwer+1]
+        }
+        ];
+            
+        
+
+        $("document").ready(function () {
+            $("#jQuizler").jQuizler(question);
+        });
+
+        //    $('.btn').click(function () {
+        //        var Iden = this.answerId;
+        //        var qId = $('.quest').Id;
+        //        $.ajax({
+        //            type: "POST",
+        //            data: { "answerId": Iden, "questId": qId },
+        //            url: '/Main/ReplyAnswer',
+        //            success: function (result) {
+        //                if (result == '1') {
+        //                    this.css('background', 'red');
+        //                }
+        //                else {
+        //                    this.css('background', 'red');
+        //                }
+        //                alert(result);
+        //            }
+        //        })
+        //    })
+        //});
+
+
+    </script>
+}
+
+

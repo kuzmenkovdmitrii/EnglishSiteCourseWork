@@ -1,0 +1,64 @@
+﻿@using StartWebSiteEnglish.Models
+@model List<StartWebSiteEnglish.Models.Words>
+
+@{
+    ViewBag.Title = "ChooseWordForTraing";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+@section Links{
+    <link href="~/Content/Main/materialssyle.css" rel="stylesheet" />
+}
+
+@section Body{
+    <style>
+        img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 80px;
+        }
+    </style>
+
+    <div style="display: block; height: 100%;">
+        <div class="header-main material">
+            <h2 class="name">Наборы слов</h2>
+        </div>
+
+        <div class="reading-table" style="background: #fff; padding: 15px;">
+             <a class="btn btn-success" href="/Main/Traning/@Model.ToList().">Изучить</a>
+            <table class="table-material">
+                <tr class="head-table">
+                    <th width="10px;">Id</th>
+                    <th width="30%" style="text-align: left">Слово</th>
+                    <th width="30%;" style="text-align: left">Перевод</th>
+                    <th width="60px;">Изображение</th>
+                </tr>
+                @foreach (Words x in Model)
+                {
+
+                    <tr>
+                        <td width="10px;">@x.Id</td>
+                        <td width="30%" style="text-align: left">@x.Word</td>
+                        <td width="30%;" style="text-align: left">@x.Translation</td>
+                        <td width="60px;">
+                          @if (x.PictureUrl == "" || x.PictureUrl==null)
+                           {
+                                <img src="~/fonts/none-image.gif" alt="Paris" style="width:80px">
+                          }
+                          else
+                          {
+                                <img src="@x.PictureUrl" alt="Paris" style="width:80px">
+                          }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+
+
+}
+
+
